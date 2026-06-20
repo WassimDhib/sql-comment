@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Module JBoss pour SQL Commenter Agent.
+
+  Ce module contient UNIQUEMENT SqlCommenterRuntime (+ son interface Instrumenter),
+  la classe appelée depuis le bytecode JDBC instrumenté.
+
+  INSTALLATION (voir JBOSS_INSTALL.md ou install-jboss-module.sh) :
+
+  1. Copier ce répertoire dans :
+     $JBOSS_HOME/modules/io/sqlcommenter/agent/main/
+
+  2. IMPORTANT — Ajouter la dépendance dans le module IronJacamar
+     (les global-modules ne s'appliquent PAS aux modules système) :
+
+     Éditer $JBOSS_HOME/modules/system/layers/base/org/jboss/ironjacamar/jdbcadapters/main/module.xml
+     et ajouter dans <dependencies> :
+       <module name="io.sqlcommenter.agent"/>
+
+  3. Redémarrer JBoss.
+-->
+<module name="io.sqlcommenter.agent" xmlns="urn:jboss:module:1.9">
+    <resources>
+        <resource-root path="sqlcommenter-runtime.jar"/>
+    </resources>
+
+    <dependencies>
+        <module name="java.logging"/>
+    </dependencies>
+</module>
